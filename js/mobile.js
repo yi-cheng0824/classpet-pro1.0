@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        currentStudent = dataManager.getStudentById(studentId);
+        currentStudent = dataManager.getStudent(studentId);
         if (!currentStudent) {
             showAlert('学生信息不存在', '错误');
             return;
