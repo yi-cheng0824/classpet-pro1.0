@@ -132,6 +132,27 @@ class DataManager {
         return this.config.stages[0];
     }
 
+
+    //添加
+    getStudentById(id) {
+    return this.getStudent(id);
+    }
+    getAllPets() {
+    return typeof PET_DATABASE !== 'undefined' ? PET_DATABASE : [];
+    }
+    getPetById(petId) {
+    const pets = this.getAllPets();
+    return pets.find(p => p.id === petId) || null;
+    }
+
+// 统一保存入口
+    save() {
+    this.saveStudents();
+    this.saveConfig();
+    }
+
+
+
     // 获取下一个阶段
     getNextStage(score) {
         const currentStage = this.getStage(score);
@@ -139,6 +160,7 @@ class DataManager {
         return this.config.stages[currentIndex + 1] || null;
     }
 
+    
     // 获取进化进度百分比
     getProgress(score) {
         const currentStage = this.getStage(score);
